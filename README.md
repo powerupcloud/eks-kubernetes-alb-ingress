@@ -1,12 +1,12 @@
 # eks-kubernetes-alb-ingress
 > More Info on ALB Ingress Controller: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
 
-###RBAC:
+### RBAC:
 ```
 kubectl apply -f rbac-role.yaml
 ```
 
-###ALB-Ingress-Controller:
+### ALB-Ingress-Controller:
 Update the following variables in the alb-ingress-controller.yaml:
 * EKS_CLUSTER_NAME
 * VPC ID
