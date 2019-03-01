@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ratings-mysql
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ratings-mysql
+        version: v2-mysql
+    spec:
+      containers:
+      - name: ratings
+        image: ACCOUNT.dkr.ecr.ap-south-1.amazonaws.com/ratings-mysql:v1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3306

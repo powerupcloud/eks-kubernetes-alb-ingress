@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: details
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: details
+    spec:
+      containers:
+      - name: details
+        image: ACCOUNT.dkr.ecr.ap-south-1.amazonaws.com/details:v2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: alb-ingress-controller
+  name: alb-ingress-controller
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: alb-ingress-controller
+  template:
+    metadata:
+      labels:
+        app: alb-ingress-controller
+    spec:
+      containers:
+        - name: alb-ingress-controller
+          args:
+            - --watch-namespace=default
+            - --ingress-class=alb
+            - --cluster-name=EKS_CLUSTER_NAME
+            - --aws-vpc-id=vpc-xxxxxx
+            - --aws-region=REGION
+            - --aws-api-debug=true
+            - --aws-max-retries=10
+            - --feature-gates=waf=false
+          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.1
+      serviceAccountName: alb-ingress-controller
